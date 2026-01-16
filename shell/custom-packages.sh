@@ -13,28 +13,28 @@ CUSTOM_PACKAGES="$CUSTOM_PACKAGES -luci-app-quickstart"
 # 去广告adghome
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-adguardhome"
 # 代理相关
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-passwall"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-passwall"
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-passwall-zh-cn"
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-ssr-plus"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-passwall2"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-passwall2"
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-passwall2-zh-cn"
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-nikki-zh-cn"
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-nekobox"
 # 同样是代理相关 但以下2个属于imm仓库内的软件 一般在build24.sh中已经集成 你也可以在此处调整它的去留 若去除组件则使用减号- 若添加则 不使用减号 或者 不处理
 
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-openclash"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-openclash"
 #穿透软件
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-npc"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-zerotier"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-npc"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-zerotier"
 
 #不要的插件
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES -smartmontools"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES -smartmontools"
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES -smartmontools-drivedb"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES -luci-i18n-homeproxy-zh-cn"
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-argon-config -luci-i18n-argon-config-zh-cn"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES -luci-i18n-homeproxy-zh-cn"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-argon-config -luci-i18n-argon-config-zh-cn"
 # VPN
 
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES tailscale"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES tailscale"
 # 分区扩容 by sirpdboy 
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-partexp luci-i18n-partexp-zh-cn"
 # 酷猫主题 by sirpdboy 
@@ -42,35 +42,35 @@ CUSTOM_PACKAGES="$CUSTOM_PACKAGES tailscale"
 # 进阶设置 by sirpdboy 
 # 当luci-app-advancedplus插件开启时 需排除冲突项 luci-app-argon-config和luci-i18n-argon-config-zh-cn 减号代表排除
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES -luci-app-fan -luci-app-log-viewer -luci-app-wizard -luci-app-filemanager -luci-app-advancedplus"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-argon-config luci-i18n-argon-config-zh-cn -luci-app-filemanager"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-argon-config luci-i18n-argon-config-zh-cn -luci-app-filemanager"
 
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-advancedplus l18n-advancedplus-zh-cn -luci-app-argon-config -luci-i18n-argon-config-zh-cn"
 # 网络测速 by sirpdboy 
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-netspeedtest luci-i18n-netspeedtest-zh-cn"
 # MosDNS
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-mosdns"
+#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-mosdns"
 # Turbo ACC 网络加速
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-turboacc"
 # 应用过滤 openappfilter.com
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-appfilter luci-i18n-appfilter-zh-cn"
 # 设置向导 by sirpdboy
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-netwizard luci-i18n-netwizard-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-netwizard luci-i18n-netwizard-zh-cn"
 # Lucky大吉 
-CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-lucky lucky"
+# CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-lucky lucky"
 # 集客AC
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-gecoosac gecoosac"
 
 # 若构建openclash 则添加内核
-if echo "CUSTOM_PACKAGES" | grep -q "luci-app-openclash"; then
-    echo "✅ 已选择 luci-app-openclash，添加 openclash core"
-    mkdir -p files/etc/openclash/core
+#if echo "CUSTOM_PACKAGES" | grep -q "luci-app-openclash"; then
+#    echo "✅ 已选择 luci-app-openclash，添加 openclash core"
+#    mkdir -p files/etc/openclash/core
     # Download clash_meta
-    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
-    wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
-    chmod +x files/etc/openclash/core/clash_meta
-    # Download GeoIP and GeoSite
-    wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/etc/openclash/GeoIP.dat
-    wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/etc/openclash/GeoSite.dat
-else
-    echo "⚪️ 未选择 luci-app-openclash"
-fi
+#    META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+#    wget -qO- $META_URL | tar xOvz > files/etc/openclash/core/clash_meta
+#    chmod +x files/etc/openclash/core/clash_meta
+#    # Download GeoIP and GeoSite
+#    wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -O files/etc/openclash/GeoIP.dat
+#    wget -q https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -O files/etc/openclash/GeoSite.dat
+#else
+ #   echo "⚪️ 未选择 luci-app-openclash"
+#fi
